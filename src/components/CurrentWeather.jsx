@@ -1,5 +1,6 @@
 import "../index.css";
 
-export default function CurrentWeather({ data }) {
-  return <div className="bg-[#a5cdf0] h-screen"></div>;
+export default function CurrentWeather() {
+  let bgMain = "#a5cdf0";
+  return `<div className=bg-[${bgMain}] h-screen"></div>`;
 }
