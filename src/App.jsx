@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import Search from "./components/search";
+import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather";
 
 const App = () => {
