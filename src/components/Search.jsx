@@ -1,11 +1,37 @@
-import "../index.css";
+import { useState } from "react";
 
-export default function Search() {
+export default function Search({ onSearch }) {
+  const [city, setCity] = useState("");
+
+  const handleSearch = () => {
+    if (city.trim() === "") return;
+    onSearch(city);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
-    <header className="fixed w-full bg-[#7c9ed5]">
-      <div className="container md:max-width-4xl mx-auto flex gap-8 py-3">
-      <input type="text" id="search" placeholder="Type in a city name" className="outline-none focus:border-b border-solid border-[#5d7ac1] text-white" />
-      <button className="bg-[#5d7ac1] text-blue-900 p-3">FIND WEATHER</button>
+    <header className="bg-[#759eda] fixed px-12 py-5 z-10 top-0 left-0 right-0 shadow-sm">
+      <div className="container flex items-center gap-5">
+        <input
+          type="text"
+          name="city"
+          value={city}
+          onKeyDown={handleKeyDown}
+          onChange={(e) => setCity(e.target.value)}
+          className="text-xl py-2 outline-none border-b border-none focus:border-solid border-[#090c51] text-white"
+          placeholder="Type in a city name"
+        />
+        <button
+          className="text-lg bg-[#5879c7] text-[#171f66] py-2 px-5 rounded-sm tracking-tight cursor-pointer"
+          onClick={handleSearch}
+        >
+          FIND WEATHER
+        </button>
       </div>
     </header>
   );
