@@ -9,7 +9,7 @@ function App() {
   const handleSearch = async (city) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=8&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&units=metric&appid=${apiKey}`
       );
 
       if (!response.ok) alert("City not found");
@@ -22,10 +22,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#a3d4f7] font-sans">
+    <main className="">
       <Search onSearch={handleSearch} />
       {weatherData && <CurrentWeather data={weatherData} />}
-    </div>
+    </main>
   );
 }
 

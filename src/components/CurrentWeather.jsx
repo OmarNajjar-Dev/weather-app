@@ -1,21 +1,17 @@
+import HourlyForecast from "./HourlyForecast";
+
 const getWeatherIcon = (id) => {
-  if (id >= 200 && id < 300) return "storm.svg";
+  if (id < 300) return "storm.svg";
   if (id >= 300 && id < 500) return "drizzle.svg";
   if (id >= 500 && id < 600) return "rain.svg";
   if (id >= 600 && id < 700) return "snow.svg";
   if (id >= 700 && id < 800) return "fog.svg";
   if (id === 800) return "clear.svg";
-  if (id > 800) return "partlycloudy.svg";
-  return "mostlycloudy.svg";
+  if (id === 801) return "partlycloudy.svg";
+  if (id >= 801 && id <= 805) return "mostlycloudy.svg";
 };
 
 export default function CurrentWeather({ data }) {
-  if (!data || !data.list || data.list.length === 0) {
-    return (
-      <div className="text-center text-gray-600 mt-4">No data available</div>
-    );
-  }
-
   const current = data.list[0];
   const minTemp = Math.min(...data.list.map((entry) => entry.main.temp_min));
   const maxTemp = Math.max(...data.list.map((entry) => entry.main.temp_max));
@@ -25,53 +21,35 @@ export default function CurrentWeather({ data }) {
   const icon = getWeatherIcon(current.weather[0].id);
 
   return (
-    <div className="bg-[#add8f7] text-[#1c1c54] p-6 rounded-xl mt-6 text-center">
-      <div className="flex flex-col items-center justify-center mb-4">
+    <div className="text-[#1c1c54] p-6 rounded-xl mt-6 text-center flex flex-col gap-6">
+      <div className="flex flex-col items-center justify-center">
         <img
           src={`/images/weather-icons/${icon}`}
           alt="Weather Icon"
-          className="w-32 h-32 mb-2"
+          className="w-46 h-46"
         />
-        <p className="text-white text-lg capitalize">{description}</p>
+        <p className="text-white text-xl">{description}</p>
       </div>
 
-      <p className="text-lg font-semibold">
-        <span className="text-xl font-bold">Temperature</span>{" "}
-        {Math.round(minTemp)}° to {Math.round(maxTemp)}°C
+      <p className="font-medium">
+        <span className="text-xl font-semibold tracking-tight mr-2">Temperature</span>
+        <span className="mx-2 text-xl">{Math.round(minTemp)}°</span>
+        <span className="text-xl">to</span>
+        <span className="mx-2 text-xl">{Math.round(maxTemp)}°C</span>
       </p>
-      <div className="mt-2 flex justify-center gap-4 text-sm text-[#1c1c54]">
+
+      <div className="mt-2 flex justify-center text-sm gap-4 text-[#1c1c54]">
         <p>
-          <span className="font-bold">Humidity</span> {humidity}%
+          <span className="font-semibold tracking-tight">Humidity</span>
+          <span className="ml-5">{humidity}%</span>
         </p>
         <p>
-          <span className="font-bold">Pressure</span> {pressure}
+          <span className="font-semibold tracking-tight">Pressure</span>
+          <span className="ml-5">{pressure}</span>
         </p>
       </div>
 
-      <div className="flex justify-center mt-6 overflow-x-auto gap-4">
-        {data.list.map((entry, index) => {
-          const hour = new Date(entry.dt * 1000).toLocaleTimeString("en-GB", {
-            hour: "2-digit",
-            minute: "2-digit",
-          });
-          const iconSmall = getWeatherIcon(entry.weather[0].id);
-          const temp = Math.round(entry.main.temp);
-          return (
-            <div
-              key={index}
-              className="flex flex-col items-center min-w-[60px]"
-            >
-              <p className="text-sm">{hour}</p>
-              <img
-                src={`/images/weather-icons/${iconSmall}`}
-                alt="icon"
-                className="w-10 h-10 my-1"
-              />
-              <p className="text-sm">{temp}°C</p>
-            </div>
-          );
-        })}
-      </div>
+      <HourlyForecast list={data.list} />
     </div>
   );
 }
