@@ -40,14 +40,14 @@ export default function CurrentWeather({ data }) {
         <span className="mx-2 text-xl">{Math.round(maxTemp)}°C</span>
       </p>
 
-      <div className="mt-2 flex justify-center text-sm gap-4 text-[#1c1c54]">
+      <div className="mt-2 flex justify-center text-sm gap-6 text-[#1c1c54]">
         <p>
           <span className="font-semibold tracking-tight">Humidity</span>
-          <span className="ml-5">{humidity}%</span>
+          <span className="ml-4">{humidity}%</span>
         </p>
         <p>
           <span className="font-semibold tracking-tight">Pressure</span>
-          <span className="ml-5">{pressure}</span>
+          <span className="ml-4">{pressure}</span>
         </p>
       </div>
 

@@ -23,12 +23,12 @@ export default function HourlyForecast({ list }) {
         const temp = Math.round(entry.main.temp);
 
         return (
-          <div key={index} className="flex flex-col gap-4">
+          <div key={index} className="flex flex-col gap-3">
             <p className="text-sm">{hour}</p>
             <img
               src={`/images/weather-icons/${iconSmall}`}
               alt="icon"
-              className="w-18 h-18 my-1"
+              className="w-20 h-20 my-1"
             />
             <p className="text-sm">{temp}°C</p>
           </div>

@@ -15,7 +15,7 @@ export default function Search({ onSearch }) {
   };
 
   return (
-    <header className="bg-[#759eda] fixed px-12 py-5 z-10 top-0 left-0 right-0 shadow-sm">
+    <header className="bg-[#759eda] fixed py-5 z-10 top-0 left-0 right-0 shadow-sm">
       <div className="container flex items-center gap-5">
         <input
           type="text"
@@ -23,11 +23,11 @@ export default function Search({ onSearch }) {
           value={city}
           onKeyDown={handleKeyDown}
           onChange={(e) => setCity(e.target.value)}
-          className="text-xl py-2 outline-none border-b border-none focus:border-solid border-[#090c51] text-white"
+          className="text-lg md:text-xl py-2 outline-none border-b border-none focus:border-solid border-[#090c51] text-white"
           placeholder="Type in a city name"
         />
         <button
-          className="text-lg bg-[#5879c7] text-[#171f66] py-2 px-5 rounded-sm tracking-tight cursor-pointer"
+          className="text-lg bg-[#5879c7] text-[#171f66] py-2 px-5 rounded-sm tracking-tight cursor-pointer whitespace-nowrap"
           onClick={handleSearch}
         >
           FIND WEATHER
