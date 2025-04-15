@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import HourlyForecast from "./HourlyForecast";
 
 const getWeatherIcon = (id) => {
