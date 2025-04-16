@@ -4,7 +4,7 @@ import CurrentWeather from "./components/CurrentWeather";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
-  const [backgroundClass, setBackgroundClass] = useState("bg-white");
+  const [backgroundClass, setBackgroundClass] = useState("bg-[#9ccef4]");
   const apiKey = "4e507e0e2e8168f45df7a6ffb8aab925";
 
   const handleSearch = async (city) => {
@@ -27,7 +27,7 @@ function App() {
   };
 
   const getBackgroundClass = () => {
-    if (!weatherData) return "bg-white";
+    if (!weatherData) return "bg-[#9ccef4]";
 
     const weatherId = weatherData.list[0].weather[0].id;
 
