@@ -4,17 +4,18 @@
     "btn_search": "FIND WEATHER",
     "label_temp": "Temperature",
     "label_to": "to",
-    "label_humidity": "Humidity",
-    "label_pressure": "Pressure",
-    "clear sky": "Clear Sky",
-    "few clouds": "Few Clouds",
-    "scattered clouds": "Scattered Clouds",
-    "broken clouds": "Broken Clouds",
-    "shower rain": "Shower Rain",
-    "rain": "Rain",
+    "label_humidity": "humidity",
+    "label_pressure": "pressure",
+    "clear sky": "clear sky",
+    "few clouds": "few clouds",
+    "scattered clouds": "scattered clouds",
+    "broken clouds": "broken clouds",
+    "shower rain": "shower rain",
+    "light rain": "light rain",
     "thunderstorm": "Thunderstorm",
-    "snow": "Snow",
-    "mist": "Mist"
+    "light snow": "light snow",
+    "mist": "mist",
+    "overcast clouds": "overcast clouds"
   },
   "ar": {
     "placeholder_search": "اكتب اسم المدينة",
@@ -28,9 +29,10 @@
     "scattered clouds": "غيوم متفرقة",
     "broken clouds": "غيوم متكسرة",
     "shower rain": "زخات مطر",
-    "rain": "مطر",
+    "light rain": "مطر",
     "thunderstorm": "عاصفة رعدية",
-    "snow": "ثلج",
-    "mist": "ضباب"
+    "light snow": "ثلوج خفيفة",
+    "mist": "ضباب",
+    "overcast clouds": "غيوم كثيفة"
   }
 }

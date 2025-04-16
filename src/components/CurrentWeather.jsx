@@ -29,7 +29,7 @@ export default function CurrentWeather(props) {
           alt="Weather Icon"
           className="w-46 h-46"
         />
-        <p className="text-white text-xl" data-key="desc_weather">{description}</p>
+        <p className="text-white text-xl" data-key={description.toLowerCase()}>{description}</p>
       </div>
 
       <p className="font-medium">

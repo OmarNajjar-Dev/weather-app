@@ -10,17 +10,14 @@ function App() {
   // Handle search logic and fetch weather data
   const handleSearch = async (city) => {
     try {
-      if (!city) {
-        alert("Please enter a city name");
-        return;
-      }
-
+      // Fetch weather data from OpenWeatherMap API
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&units=metric&appid=${apiKey}`
       );
 
       if (!response.ok) {
-        alert("City not found");
+        alert("City not found. Please try again.");
+        // Reset weather data if the city is not found
         setWeatherData(null);
         return;
       }

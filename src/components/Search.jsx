@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Search({ handleSearch, headerBg, buttonBg }) {
-  const [city, setCity] = useState("tripoli");
+  const [city, setCity] = useState("Tripoli");
 
   useEffect(() => {
     handleSearch(city);
