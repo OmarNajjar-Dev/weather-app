@@ -1,0 +1,36 @@
+{
+  "en": {
+    "placeholder_search": "Type in a city name",
+    "btn_search": "FIND WEATHER",
+    "label_temp": "Temperature",
+    "label_to": "to",
+    "label_humidity": "Humidity",
+    "label_pressure": "Pressure",
+    "clear sky": "Clear Sky",
+    "few clouds": "Few Clouds",
+    "scattered clouds": "Scattered Clouds",
+    "broken clouds": "Broken Clouds",
+    "shower rain": "Shower Rain",
+    "rain": "Rain",
+    "thunderstorm": "Thunderstorm",
+    "snow": "Snow",
+    "mist": "Mist"
+  },
+  "ar": {
+    "placeholder_search": "اكتب اسم المدينة",
+    "btn_search": "ابحث عن الطقس",
+    "label_temp": "درجة الحرارة",
+    "label_to": "إلى",
+    "label_humidity": "الرطوبة",
+    "label_pressure": "الضغط",
+    "clear sky": "سماء صافية",
+    "few clouds": "غيوم قليلة",
+    "scattered clouds": "غيوم متفرقة",
+    "broken clouds": "غيوم متكسرة",
+    "shower rain": "زخات مطر",
+    "rain": "مطر",
+    "thunderstorm": "عاصفة رعدية",
+    "snow": "ثلج",
+    "mist": "ضباب"
+  }
+}

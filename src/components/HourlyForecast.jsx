@@ -1,19 +1,8 @@
 import React from "react";
 
-const getWeatherIcon = (id) => {
-  if (id >= 200 && id < 300) return "storm.svg";
-  if (id >= 300 && id < 500) return "drizzle.svg";
-  if (id >= 500 && id < 600) return "rain.svg";
-  if (id >= 600 && id < 700) return "snow.svg";
-  if (id >= 700 && id < 800) return "fog.svg";
-  if (id === 800) return "clear.svg";
-  if (id > 800) return "partlycloudy.svg";
-  return "mostlycloudy.svg";
-};
-
-export default function HourlyForecast({ list }) {
+export default function HourlyForecast({ list, getWeatherIcon}) {
   return (
-    <div className="flex justify-center mt-14 overflow-x-auto gap-10">
+    <div className="flex flex-wrap justify-center mt-14 gap-10">
       {list.map((entry, index) => {
         const hour = new Date(entry.dt * 1000).toLocaleTimeString("en-GB", {
           hour: "2-digit",
@@ -28,7 +17,7 @@ export default function HourlyForecast({ list }) {
             <img
               src={`/images/weather-icons/${iconSmall}`}
               alt="icon"
-              className="w-20 h-20 my-1"
+              className="w-18 h-18 my-1 sm:w-20 sm:h-20"
             />
             <p className="text-sm">{temp}°C</p>
           </div>

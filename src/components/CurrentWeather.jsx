@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import HourlyForecast from "./HourlyForecast";
 
 const getWeatherIcon = (id) => {
@@ -12,7 +11,8 @@ const getWeatherIcon = (id) => {
   if (id >= 801 && id <= 805) return "mostlycloudy.svg";
 };
 
-export default function CurrentWeather({ data }) {
+export default function CurrentWeather(props) {
+  const { data } = props;
   const current = data.list[0];
   const minTemp = Math.min(...data.list.map((entry) => entry.main.temp_min));
   const maxTemp = Math.max(...data.list.map((entry) => entry.main.temp_max));
@@ -22,37 +22,37 @@ export default function CurrentWeather({ data }) {
   const icon = getWeatherIcon(current.weather[0].id);
 
   return (
-    <div className="text-[#1c1c54] p-6 rounded-xl mt-6 text-center flex flex-col gap-6">
+    <div className="text-[#1c1c54] p-6 rounded-xl text-center flex flex-col gap-6">
       <div className="flex flex-col items-center justify-center">
         <img
           src={`/images/weather-icons/${icon}`}
           alt="Weather Icon"
           className="w-46 h-46"
         />
-        <p className="text-white text-xl">{description}</p>
+        <p className="text-white text-xl" data-key="desc_weather">{description}</p>
       </div>
 
       <p className="font-medium">
-        <span className="text-xl font-semibold tracking-tight mr-2">
+        <span className="text-xl font-semibold tracking-tight me-2" data-key="label_temp">
           Temperature
         </span>
         <span className="mx-2 text-xl">{Math.round(minTemp)}°</span>
-        <span className="text-xl">to</span>
+        <span className="text-xl" data-key="label_to">to</span>
         <span className="mx-2 text-xl">{Math.round(maxTemp)}°C</span>
       </p>
 
       <div className="mt-2 flex justify-center text-sm gap-6 text-[#1c1c54]">
         <p>
-          <span className="font-semibold tracking-tight">Humidity</span>
-          <span className="ml-4">{humidity}%</span>
+          <span className="font-semibold tracking-tight" data-key="label_humidity">Humidity</span>
+          <span className="ms-4">{humidity}%</span>
         </p>
         <p>
-          <span className="font-semibold tracking-tight">Pressure</span>
-          <span className="ml-4">{pressure}</span>
+          <span className="font-semibold tracking-tight" data-key="label_pressure">Pressure</span>
+          <span className="ms-4">{pressure}</span>
         </p>
       </div>
 
-      <HourlyForecast list={data.list} />
+      <HourlyForecast list={data.list} getWeatherIcon={getWeatherIcon}/>
     </div>
   );
 }
