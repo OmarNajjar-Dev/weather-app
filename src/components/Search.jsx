@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// eslint-disable-next-line react/prop-types
 export default function Search({ onSearch }) {
   const [city, setCity] = useState("");
 
