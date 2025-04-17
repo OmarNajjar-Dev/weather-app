@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function updateText(langData) {
   const elements = document.querySelectorAll("[data-key]");
   elements.forEach((el) => {

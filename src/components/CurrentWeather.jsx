@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import HourlyForecast from "./HourlyForecast";
 
 const getWeatherIcon = (id) => {
@@ -12,8 +13,15 @@ const getWeatherIcon = (id) => {
 };
 
 export default function CurrentWeather(props) {
-  const { data } = props;
+  const { data, unit } = props;
   const current = data.list[0];
+
+  const convertTemp = (temp) => {
+    if (unit === "F") return Math.round((temp * 9) / 5 + 32);
+    if (unit === "K") return Math.round(temp + 273.15);
+    return Math.round(temp);
+  };
+
   const minTemp = Math.min(...data.list.map((entry) => entry.main.temp_min));
   const maxTemp = Math.max(...data.list.map((entry) => entry.main.temp_max));
   const pressure = current.main.pressure;
@@ -29,16 +37,18 @@ export default function CurrentWeather(props) {
           alt="Weather Icon"
           className="w-46 h-46"
         />
-        <p className="text-white text-xl" data-key={description.toLowerCase()}>{description}</p>
+        <p className="text-white text-xl" data-key={description.toLowerCase()}>
+          {description}
+        </p>
       </div>
 
       <p className="font-medium">
         <span className="text-xl font-semibold tracking-tight me-2" data-key="label_temp">
           Temperature
         </span>
-        <span className="mx-2 text-xl">{Math.round(minTemp)}°</span>
+        <span className="mx-2 text-xl">{convertTemp(minTemp)}°</span>
         <span className="text-xl" data-key="label_to">to</span>
-        <span className="mx-2 text-xl">{Math.round(maxTemp)}°C</span>
+        <span className="mx-2 text-xl">{convertTemp(maxTemp)}°{unit}</span>
       </p>
 
       <div className="mt-2 flex justify-center text-sm gap-6 text-[#1c1c54]">
@@ -52,7 +62,7 @@ export default function CurrentWeather(props) {
         </p>
       </div>
 
-      <HourlyForecast list={data.list} getWeatherIcon={getWeatherIcon}/>
+      <HourlyForecast list={data.list} getWeatherIcon={getWeatherIcon} unit={unit} />
     </div>
   );
 }

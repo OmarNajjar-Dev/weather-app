@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
-export default function Search({ handleSearch, headerBg, buttonBg }) {
+// eslint-disable-next-line react/prop-types
+export default function Search({ handleSearch }) {
   const [city, setCity] = useState("Tripoli");
 
   useEffect(() => {
     handleSearch(city);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleKeyDown = (e) => {
@@ -14,9 +16,7 @@ export default function Search({ handleSearch, headerBg, buttonBg }) {
   };
 
   return (
-    <header
-      className={`${headerBg} p-5 shadow-sm transition-colors duration-[3000ms]`}
-    >
+    <header className="bg-[#9ccef4] p-5 shadow-sm transition-colors duration-[3000ms]">
       <div className="container flex items-center justify-between md:justify-start gap-5">
         <input
           type="text"
@@ -26,12 +26,10 @@ export default function Search({ handleSearch, headerBg, buttonBg }) {
           onChange={(e) => setCity(e.target.value)}
           className="text-lg md:text-xl max-w-[40%] py-2 outline-none border-b border-none focus:border-solid border-[#090c51] text-white bg-transparent"
           placeholder="Type in a city name"
-          data-key="placeholder_search"
         />
         <button
-          className={`${buttonBg} text-md md:text-lg text-[#171f66] py-2 px-5 rounded-sm tracking-tight cursor-pointer whitespace-nowrap transition-colors duration-[3000ms]`}
+          className="bg-[#5879c7] text-md md:text-lg text-[#171f66] py-2 px-5 rounded-sm tracking-tight cursor-pointer"
           onClick={() => handleSearch(city)}
-          data-key="btn_search"
         >
           FIND WEATHER
         </button>
