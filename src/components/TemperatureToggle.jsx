@@ -1,19 +1,17 @@
 /* eslint-disable react/prop-types */
 // src/components/TemperatureToggle.jsx
+
 // eslint-disable-next-line no-unused-vars
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function TemperatureToggle({ onUnitChange }) {
-  const [unit, setUnit] = useState("C"); // C → F → K
+  const units = ["C", "F", "K"];
+  const [index, setIndex] = useState(0);
 
   const toggleUnit = () => {
-    let newUnit;
-    if (unit === "C") newUnit = "F";
-    else if (unit === "F") newUnit = "K";
-    else newUnit = "C";
-
-    setUnit(newUnit);
-    onUnitChange(newUnit);
+    const newIndex = (index + 1) % units.length;
+    setIndex(newIndex);
+    onUnitChange(units[newIndex]);
   };
 
   return (
@@ -21,7 +19,7 @@ export default function TemperatureToggle({ onUnitChange }) {
       onClick={toggleUnit}
       className="fixed bottom-4 left-4 bg-blue-700 text-white px-4 py-2 rounded"
     >
-      {unit}
+      {units[index]}
     </button>
   );
 }
