@@ -37,32 +37,36 @@ export default function CurrentWeather(props) {
           alt="Weather Icon"
           className="w-46 h-46"
         />
-        <p className="text-white text-xl" data-key={description.toLowerCase()}>
-          {description}
-        </p>
+        <p className="text-white text-xl">{description}</p>
       </div>
 
       <p className="font-medium">
-        <span className="text-xl font-semibold tracking-tight me-2" data-key="label_temp">
+        <span className="text-xl font-semibold tracking-tight me-2">
           Temperature
         </span>
         <span className="mx-2 text-xl">{convertTemp(minTemp)}°</span>
-        <span className="text-xl" data-key="label_to">to</span>
-        <span className="mx-2 text-xl">{convertTemp(maxTemp)}°{unit}</span>
+        <span className="text-xl">to</span>
+        <span className="mx-2 text-xl">
+          {convertTemp(maxTemp)}°{unit}
+        </span>
       </p>
 
       <div className="mt-2 flex justify-center text-sm gap-6 text-[#1c1c54]">
         <p>
-          <span className="font-semibold tracking-tight" data-key="label_humidity">Humidity</span>
+          <span className="font-semibold tracking-tight">Humidity</span>
           <span className="ms-4">{humidity}%</span>
         </p>
         <p>
-          <span className="font-semibold tracking-tight" data-key="label_pressure">Pressure</span>
+          <span className="font-semibold tracking-tight">Pressure</span>
           <span className="ms-4">{pressure}</span>
         </p>
       </div>
 
-      <HourlyForecast list={data.list} getWeatherIcon={getWeatherIcon} unit={unit} />
+      <HourlyForecast
+        list={data.list}
+        getWeatherIcon={getWeatherIcon}
+        unit={unit}
+      />
     </div>
   );
 }

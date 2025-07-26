@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather";
-import LanguageToggle from "./components/LanguageToggle";
 import TemperatureToggle from "./components/TemperatureToggle";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useLocalStorage("weather", null);
   const [unit, setUnit] = useState("C");
 
   const apiKey = "4e507e0e2e8168f45df7a6ffb8aab925";
@@ -73,10 +73,15 @@ function App() {
   const { mainBg, headerBg, buttonBg } = getBackgroundColors(weatherData);
 
   return (
-    <main className={`min-h-screen transition-colors duration-[3000ms] ${mainBg}`}>
-      <Search handleSearch={handleSearch} headerBg={headerBg} buttonBg={buttonBg} />
+    <main
+      className={`min-h-screen transition-colors duration-[3000ms] ${mainBg}`}
+    >
+      <Search
+        handleSearch={handleSearch}
+        headerBg={headerBg}
+        buttonBg={buttonBg}
+      />
       {weatherData && <CurrentWeather data={weatherData} unit={unit} />}
-      <LanguageToggle />
       <TemperatureToggle onUnitChange={setUnit} />
     </main>
   );

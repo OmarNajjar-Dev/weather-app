@@ -17,7 +17,7 @@ export default function TemperatureToggle({ onUnitChange }) {
   return (
     <button
       onClick={toggleUnit}
-      className="fixed bottom-4 left-4 bg-blue-700 text-white px-4 py-2 rounded"
+      className="fixed bottom-4 left-4 bg-blue-700 text-white px-4 py-2 rounded cursor-pointer"
     >
       {units[index]}
     </button>

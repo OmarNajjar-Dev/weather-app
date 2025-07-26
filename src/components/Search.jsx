@@ -6,7 +6,7 @@ export default function Search({ handleSearch, headerBg, buttonBg }) {
 
   useEffect(() => {
     handleSearch(city);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleKeyDown = (e) => {
@@ -16,7 +16,9 @@ export default function Search({ handleSearch, headerBg, buttonBg }) {
   };
 
   return (
-    <header className={`p-5 shadow-sm transition-colors duration-[3000ms] ${headerBg}`}>
+    <header
+      className={`p-5 shadow-sm transition-colors duration-[3000ms] ${headerBg}`}
+    >
       <div className="container flex items-center justify-between md:justify-start gap-5">
         <input
           type="text"
@@ -30,7 +32,6 @@ export default function Search({ handleSearch, headerBg, buttonBg }) {
         <button
           className={`text-md md:text-lg text-[#171f66] py-2 px-5 rounded-sm tracking-tight cursor-pointer transition-colors duration-[3000ms] ${buttonBg}`}
           onClick={() => handleSearch(city)}
-          data-key="btn_search"
         >
           FIND WEATHER
         </button>
