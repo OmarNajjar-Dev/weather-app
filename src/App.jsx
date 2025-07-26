@@ -1,19 +1,24 @@
 import { useState } from "react";
 import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather";
+import LanguageToggle from "./components/LanguageToggle";
 import TemperatureToggle from "./components/TemperatureToggle";
 import useLocalStorage from "./hooks/useLocalStorage";
+import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
-function App() {
+function AppContent() {
   const [weatherData, setWeatherData] = useLocalStorage("weather", null);
   const [unit, setUnit] = useState("C");
+  const { language } = useLanguage();
 
   const apiKey = "4e507e0e2e8168f45df7a6ffb8aab925";
 
   const handleSearch = async (city) => {
     try {
+      // Use Arabic language parameter when language is set to Arabic
+      const langParam = language === "ar" ? "&lang=ar" : "";
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&units=metric&appid=${apiKey}${langParam}`
       );
       if (!response.ok) {
         alert("City not found. Please try again.");
@@ -82,8 +87,17 @@ function App() {
         buttonBg={buttonBg}
       />
       {weatherData && <CurrentWeather data={weatherData} unit={unit} />}
+      <LanguageToggle />
       <TemperatureToggle onUnitChange={setUnit} />
     </main>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

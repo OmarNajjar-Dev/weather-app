@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import HourlyForecast from "./HourlyForecast";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const getWeatherIcon = (id) => {
   if (id < 300) return "storm.svg";
@@ -14,6 +15,7 @@ const getWeatherIcon = (id) => {
 
 export default function CurrentWeather(props) {
   const { data, unit } = props;
+  const { t, translateWeatherDescription } = useLanguage();
   const current = data.list[0];
 
   const convertTemp = (temp) => {
@@ -37,15 +39,17 @@ export default function CurrentWeather(props) {
           alt="Weather Icon"
           className="w-46 h-46"
         />
-        <p className="text-white text-xl">{description}</p>
+        <p className="text-white text-xl">
+          {translateWeatherDescription(description)}
+        </p>
       </div>
 
       <p className="font-medium">
         <span className="text-xl font-semibold tracking-tight me-2">
-          Temperature
+          {t("label_temp")}
         </span>
         <span className="mx-2 text-xl">{convertTemp(minTemp)}°</span>
-        <span className="text-xl">to</span>
+        <span className="text-xl">{t("label_to")}</span>
         <span className="mx-2 text-xl">
           {convertTemp(maxTemp)}°{unit}
         </span>
@@ -53,11 +57,15 @@ export default function CurrentWeather(props) {
 
       <div className="mt-2 flex justify-center text-sm gap-6 text-[#1c1c54]">
         <p>
-          <span className="font-semibold tracking-tight">Humidity</span>
+          <span className="font-semibold tracking-tight">
+            {t("label_humidity")}
+          </span>
           <span className="ms-4">{humidity}%</span>
         </p>
         <p>
-          <span className="font-semibold tracking-tight">Pressure</span>
+          <span className="font-semibold tracking-tight">
+            {t("label_pressure")}
+          </span>
           <span className="ms-4">{pressure}</span>
         </p>
       </div>

@@ -5,3 +5,24 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .me-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .ms-4 {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
+}
+
+/* Arabic font support */
+[dir="rtl"] body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
